@@ -1,0 +1,679 @@
+{
+  "labels": [
+    {
+      "name": "Must",
+      "color": "b60205",
+      "description": "MoSCoW: minimum viable product"
+    },
+    {
+      "name": "Should",
+      "color": "fbca04",
+      "description": "MoSCoW: intended but flexible"
+    },
+    {
+      "name": "Could",
+      "color": "0e8a16",
+      "description": "MoSCoW: only if time permits"
+    },
+    {
+      "name": "frontend",
+      "color": "1d76db",
+      "description": "React dashboard"
+    },
+    {
+      "name": "backend",
+      "color": "5319e7",
+      "description": "FastAPI service"
+    },
+    {
+      "name": "ml",
+      "color": "d93f0b",
+      "description": "Models, data and evaluation"
+    },
+    {
+      "name": "docs",
+      "color": "0075ca",
+      "description": "Documentation and course deliverables"
+    },
+    {
+      "name": "devops",
+      "color": "006b75",
+      "description": "CI, deployment, repository tooling"
+    },
+    {
+      "name": "feature",
+      "color": "c5def5",
+      "description": "Product feature F1-F19"
+    },
+    {
+      "name": "baseline",
+      "color": "bfd4f2",
+      "description": "Exists in prototype; verify and fix"
+    },
+    {
+      "name": "deliverable",
+      "color": "d4c5f9",
+      "description": "Course deliverable"
+    },
+    {
+      "name": "chore",
+      "color": "ededed",
+      "description": "Setup / housekeeping"
+    },
+    {
+      "name": "change-request",
+      "color": "e99695",
+      "description": "Change request for the CCB (Section 5.7)"
+    },
+    {
+      "name": "bug",
+      "color": "d73a4a",
+      "description": "Something is broken"
+    }
+  ],
+  "milestones": [
+    "Milestone 1 (Week 4)",
+    "Milestone 2 (Week 7)",
+    "Release 1.0 (Week 12)",
+    "Milestone 3 (Week 13)"
+  ],
+  "issues": [
+    {
+      "id": "F1",
+      "title": "F1: Manual patient lookup",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 1,
+      "sprint": "2",
+      "labels": [
+        "feature",
+        "Must",
+        "baseline",
+        "frontend",
+        "backend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F1** | Priority: **Must** | Type: Baseline | Story points: **1** | Proposed sprint: **2**\n\n**User story**\nAs an ICU doctor, I want to enter a patient ID and see the predicted status, so that I can check one patient quickly.\n\n**Description**\nEnter a patient ID to see predicted status\n\n**Acceptance criteria**\n- [ ] A valid patient ID shows the predicted status label\n- [ ] An unknown ID shows a clear error message\n- [ ] Uses the shared status mapping from F8\n- [ ] Baseline behaviour verified and any defects fixed\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Enter a patient ID to see predicted status",
+      "type": "Baseline",
+      "areas": [
+        "frontend",
+        "backend"
+      ]
+    },
+    {
+      "id": "F2",
+      "title": "F2: Live monitoring dashboard",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 2,
+      "sprint": "2",
+      "labels": [
+        "feature",
+        "Must",
+        "baseline",
+        "frontend",
+        "backend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F2** | Priority: **Must** | Type: Baseline | Story points: **2** | Proposed sprint: **2**\n\n**User story**\nAs an ICU nurse, I want a live grid of patients with current vitals and status, so that I can watch many patients at once.\n\n**Description**\nWebSocket feed showing patients' current vitals and status\n\n**Acceptance criteria**\n- [ ] Patient grid updates from the WebSocket feed without page reload\n- [ ] A new reading appears on the dashboard within 2 seconds (AC4)\n- [ ] Status colours follow the shared mapping (F8)\n- [ ] Depends on F7 and F8\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "WebSocket feed showing patients' current vitals and status",
+      "type": "Baseline",
+      "areas": [
+        "frontend",
+        "backend"
+      ]
+    },
+    {
+      "id": "F3",
+      "title": "F3: Status classification",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 1,
+      "sprint": "1",
+      "labels": [
+        "feature",
+        "Must",
+        "baseline",
+        "ml"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F3** | Priority: **Must** | Type: Baseline | Story points: **1** | Proposed sprint: **1**\n\n**User story**\nAs an ICU nurse, I want every reading classified into a status level, so that I can see how urgent each patient is.\n\n**Description**\nDecision Tree model classifies each reading into 5 levels (Normal to Critical / Outlier)\n\n**Acceptance criteria**\n- [ ] Decision Tree loads from the documented model location (no hard-coded paths)\n- [ ] Five status classes returned (0 Normal ... 4 Outlier)\n- [ ] Baseline accuracy (87.1%) reproduced after F6/F9\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Decision Tree model classifies each reading into 5 levels (Normal to Critical / Outlier)",
+      "type": "Baseline",
+      "areas": [
+        "ml"
+      ]
+    },
+    {
+      "id": "F4",
+      "title": "F4: Anomaly detection",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 1,
+      "sprint": "1",
+      "labels": [
+        "feature",
+        "Must",
+        "baseline",
+        "ml"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F4** | Priority: **Must** | Type: Baseline | Story points: **1** | Proposed sprint: **1**\n\n**User story**\nAs an ICU nurse, I want unusual combinations of vitals flagged, so that I notice problems single thresholds would miss.\n\n**Description**\nIsolation Forest algorithm identifies abnormal combinations of vitals\n\n**Acceptance criteria**\n- [ ] Isolation Forest loads from the documented model location\n- [ ] Anomaly flag included in the API/WebSocket payload\n- [ ] Quantitative evaluation is done in F9\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Isolation Forest algorithm identifies abnormal combinations of vitals",
+      "type": "Baseline",
+      "areas": [
+        "ml"
+      ]
+    },
+    {
+      "id": "F5",
+      "title": "F5: Alert flag with reasons",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 1,
+      "sprint": "1",
+      "labels": [
+        "feature",
+        "Must",
+        "baseline",
+        "backend",
+        "ml"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F5** | Priority: **Must** | Type: Baseline | Story points: **1** | Proposed sprint: **1**\n\n**User story**\nAs an ICU nurse, I want an alert with a stated reason, so that I understand why a patient was flagged (AC6).\n\n**Description**\nAlert raised when status is critical or an anomaly is found\n\n**Acceptance criteria**\n- [ ] Alert raised when status is Critical or an anomaly is detected\n- [ ] Every alert carries a human-readable reason\n- [ ] Uses the single alert logic from F8\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Alert raised when status is critical or an anomaly is found",
+      "type": "Baseline",
+      "areas": [
+        "backend",
+        "ml"
+      ]
+    },
+    {
+      "id": "F6",
+      "title": "F6: Reproducible setup",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 3,
+      "sprint": "0",
+      "labels": [
+        "feature",
+        "Must",
+        "backend",
+        "ml",
+        "docs"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F6** | Priority: **Must** | Type: New | Story points: **3** | Proposed sprint: **0**\n\n**User story**\nAs a new developer, I want to run the system from a clean clone using only the README, so that I can contribute within minutes (O1, AC2).\n\n**Description**\nrequirements.txt, relative paths and configuration instead of hard-coded Windows paths; script to download the dataset and train the models\n\n**Acceptance criteria**\n- [ ] requirements.txt present and installs cleanly\n- [ ] No absolute / Windows-specific paths remain; configuration via env or config file\n- [ ] Script downloads (or documents downloading) the dataset and trains both models into a known folder\n- [ ] A member who did not write the scripts runs everything from a clean clone in <= 15 minutes\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "requirements.txt, relative paths and configuration instead of hard-coded Windows paths; script to download the dataset and train the models",
+      "type": "New",
+      "areas": [
+        "backend",
+        "ml",
+        "docs"
+      ]
+    },
+    {
+      "id": "F7",
+      "title": "F7: Time series replay",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 5,
+      "sprint": "1",
+      "labels": [
+        "feature",
+        "Must",
+        "backend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F7** | Priority: **Must** | Type: New | Story points: **5** | Proposed sprint: **1**\n\n**User story**\nAs an ICU nurse, I want each patient's readings to change over time in recorded order, so that the live view reflects a real monitoring feed.\n\n**Description**\nStream each patient's readings in time order\n\n**Acceptance criteria**\n- [ ] Replay streams readings in timestamp order per patient\n- [ ] The 'first reading only' defect is gone: values change over time (AC4)\n- [ ] Replay speed configurable\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Stream each patient's readings in time order",
+      "type": "New",
+      "areas": [
+        "backend"
+      ]
+    },
+    {
+      "id": "F8",
+      "title": "F8: Consistent alert rules",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 5,
+      "sprint": "1",
+      "labels": [
+        "feature",
+        "Must",
+        "backend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F8** | Priority: **Must** | Type: New | Story points: **5** | Proposed sprint: **1**\n\n**User story**\nAs an ICU nurse, I want the same patient to show the same status in every view, so that I can trust the dashboard (AC5).\n\n**Description**\nOne shared status mapping and alert logic for every endpoint\n\n**Acceptance criteria**\n- [ ] Single status-code -> label mapping used by REST and both WebSocket endpoints\n- [ ] Single alert-rule function reused everywhere\n- [ ] Cross-view consistency test passes (lookup, live grid, alert feed)\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "One shared status mapping and alert logic for every endpoint",
+      "type": "New",
+      "areas": [
+        "backend"
+      ]
+    },
+    {
+      "id": "F9",
+      "title": "F9: Rigorous model evaluation",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 5,
+      "sprint": "0",
+      "labels": [
+        "feature",
+        "Must",
+        "ml"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F9** | Priority: **Must** | Type: New | Story points: **5** | Proposed sprint: **0**\n\n**User story**\nAs the team, we want a reproducible, trustworthy model evaluation, so that alert quality is measured rather than assumed (O3, AC3).\n\n**Description**\nReproduce original results, then improve evaluation: fixed seeds, stratified 5-fold CV, recall-focused tuning, class weighting; evaluate Isolation Forest quantitatively\n\n**Acceptance criteria**\n- [ ] Baseline report results reproduced from the repository (Sprint 0 spike)\n- [ ] Fixed random seeds; stratified 5-fold cross-validation\n- [ ] Targets: Critical recall >= 0.90 (CV mean), Moderate recall >= 0.70, macro F1 >= 0.88, false alerts on normal <= 10%\n- [ ] Isolation Forest evaluated quantitatively, not only visually\n- [ ] Results written up in the model evaluation report (D3)\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Reproduce original results, then improve evaluation: fixed seeds, stratified 5-fold CV, recall-focused tuning, class weighting; evaluate Isolation Forest quantitatively",
+      "type": "New",
+      "areas": [
+        "ml"
+      ]
+    },
+    {
+      "id": "F10",
+      "title": "F10: Alert feed",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 5,
+      "sprint": "2",
+      "labels": [
+        "feature",
+        "Must",
+        "frontend",
+        "backend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F10** | Priority: **Must** | Type: New | Story points: **5** | Proposed sprint: **2**\n\n**User story**\nAs an ICU nurse, I want a prioritised, colour-coded alert feed that I can acknowledge, so that I can work through alerts in order of urgency (AC6).\n\n**Description**\nPrioritised alert feed with colour coding; acknowledgement by staff for each alert\n\n**Acceptance criteria**\n- [ ] Alerts sorted by priority and colour-coded\n- [ ] Each alert shows its reason\n- [ ] Staff can acknowledge an alert; acknowledged state is visible\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Prioritised alert feed with colour coding; acknowledgement by staff for each alert",
+      "type": "New",
+      "areas": [
+        "frontend",
+        "backend"
+      ]
+    },
+    {
+      "id": "F11",
+      "title": "F11: Codebase cleanup",
+      "kind": "feature",
+      "priority": "Must",
+      "sp": 2,
+      "sprint": "0",
+      "labels": [
+        "feature",
+        "Must",
+        "backend",
+        "frontend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F11** | Priority: **Must** | Type: New | Story points: **2** | Proposed sprint: **0**\n\n**User story**\nAs a developer, I want duplicated and unused code removed, so that the codebase is easier to extend and test.\n\n**Description**\nRemove duplicated endpoint code and unused template components\n\n**Acceptance criteria**\n- [ ] Duplicated endpoint code consolidated\n- [ ] Unused template components removed\n- [ ] App still builds and runs\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Remove duplicated endpoint code and unused template components",
+      "type": "New",
+      "areas": [
+        "backend",
+        "frontend"
+      ]
+    },
+    {
+      "id": "F12",
+      "title": "F12: Patient trend view",
+      "kind": "feature",
+      "priority": "Should",
+      "sp": 5,
+      "sprint": "3",
+      "labels": [
+        "feature",
+        "Should",
+        "frontend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F12** | Priority: **Should** | Type: New | Story points: **5** | Proposed sprint: **3**\n\n**User story**\nAs an ICU doctor, I want trend charts for one patient, so that I can see how their vitals are changing.\n\n**Description**\nCharts of heart rate, SpO2, temperature, respiration and blood pressure over time for one patient\n\n**Acceptance criteria**\n- [ ] Charts for heart rate, SpO2, temperature, respiratory rate and blood pressure\n- [ ] Time axis follows replay order\n- [ ] Readable on laptop screen sizes\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Charts of heart rate, SpO2, temperature, respiration and blood pressure over time for one patient",
+      "type": "New",
+      "areas": [
+        "frontend"
+      ]
+    },
+    {
+      "id": "F13",
+      "title": "F13: Alert history log",
+      "kind": "feature",
+      "priority": "Should",
+      "sp": 3,
+      "sprint": "3",
+      "labels": [
+        "feature",
+        "Should",
+        "backend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F13** | Priority: **Should** | Type: New | Story points: **3** | Proposed sprint: **3**\n\n**User story**\nAs an ICU doctor, I want to review a patient's past alerts, so that I can see how often and when they were flagged.\n\n**Description**\nAlerts and acknowledgements stored in SQLite and viewable per patient\n\n**Acceptance criteria**\n- [ ] Alerts and acknowledgements persisted in SQLite\n- [ ] Endpoint and UI to view history per patient\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Alerts and acknowledgements stored in SQLite and viewable per patient",
+      "type": "New",
+      "areas": [
+        "backend"
+      ]
+    },
+    {
+      "id": "F14",
+      "title": "F14: Staff login",
+      "kind": "feature",
+      "priority": "Should",
+      "sp": 5,
+      "sprint": "3",
+      "labels": [
+        "feature",
+        "Should",
+        "backend",
+        "frontend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F14** | Priority: **Should** | Type: New | Story points: **5** | Proposed sprint: **3**\n\n**User story**\nAs the team, we want only authorised staff to see patient data, so that the demo reflects a realistic access model.\n\n**Description**\nToken-based login so only authorised staff can view patient data\n\n**Acceptance criteria**\n- [ ] Login endpoint issues a token; protected endpoints reject missing/invalid tokens\n- [ ] Login screen in the frontend\n- [ ] Demo credentials documented; no real credentials committed\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Token-based login so only authorised staff can view patient data",
+      "type": "New",
+      "areas": [
+        "backend",
+        "frontend"
+      ]
+    },
+    {
+      "id": "F15",
+      "title": "F15: Automated tests & CI",
+      "kind": "feature",
+      "priority": "Should",
+      "sp": 5,
+      "sprint": "2",
+      "labels": [
+        "feature",
+        "Should",
+        "backend",
+        "frontend",
+        "devops"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F15** | Priority: **Should** | Type: New | Story points: **5** | Proposed sprint: **2**\n\n**User story**\nAs the team, we want automated tests on every pull request, so that regressions are caught before merge.\n\n**Description**\npytest for the API and models, Vitest for key components, run by GitHub Actions on every pull request\n\n**Acceptance criteria**\n- [ ] pytest suite for API and models; Vitest for key components\n- [ ] GitHub Actions workflow runs both on every pull request\n- [ ] Backend coverage >= 70%\n- [ ] CI required to pass before merge (from Sprint 3)\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "pytest for the API and models, Vitest for key components, run by GitHub Actions on every pull request",
+      "type": "New",
+      "areas": [
+        "backend",
+        "frontend",
+        "devops"
+      ]
+    },
+    {
+      "id": "F16",
+      "title": "F16: Demo deployment",
+      "kind": "feature",
+      "priority": "Should",
+      "sp": 3,
+      "sprint": "3",
+      "labels": [
+        "feature",
+        "Should",
+        "devops",
+        "frontend",
+        "backend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F16** | Priority: **Should** | Type: New | Story points: **3** | Proposed sprint: **3**\n\n**User story**\nAs the sponsor, I want to open the demo from a public link, so that I can evaluate it without installing anything.\n\n**Description**\nFrontend and backend hosted on free tiers so the system can be shown from a public link\n\n**Acceptance criteria**\n- [ ] Frontend and backend deployed on free tiers; WebSockets work (A6)\n- [ ] Public link in the README\n- [ ] Fallback: local demo plus recorded video if free tier fails\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Frontend and backend hosted on free tiers so the system can be shown from a public link",
+      "type": "New",
+      "areas": [
+        "devops",
+        "frontend",
+        "backend"
+      ]
+    },
+    {
+      "id": "F17",
+      "title": "F17: Dashboard filters",
+      "kind": "feature",
+      "priority": "Could",
+      "sp": 2,
+      "sprint": "3 (stretch)",
+      "labels": [
+        "feature",
+        "Could",
+        "frontend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F17** | Priority: **Could** | Type: New | Story points: **2** | Proposed sprint: **3 (stretch)**\n\n**User story**\nAs an ICU nurse, I want to filter and sort the patient grid, so that I can focus on the patients that matter.\n\n**Description**\nFilter and sort patients by status or alert state\n\n**Acceptance criteria**\n- [ ] Filter by status and by alert state\n- [ ] Sort by severity\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Filter and sort patients by status or alert state",
+      "type": "New",
+      "areas": [
+        "frontend"
+      ]
+    },
+    {
+      "id": "F18",
+      "title": "F18: Per-patient thresholds",
+      "kind": "feature",
+      "priority": "Could",
+      "sp": 3,
+      "sprint": "3 (stretch)",
+      "labels": [
+        "feature",
+        "Could",
+        "frontend",
+        "backend"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F18** | Priority: **Could** | Type: New | Story points: **3** | Proposed sprint: **3 (stretch)**\n\n**User story**\nAs an ICU doctor, I want to adjust alert thresholds for one patient, so that alerts fit that patient's condition.\n\n**Description**\nClinician-adjustable alert thresholds for individual patients\n\n**Acceptance criteria**\n- [ ] Thresholds editable per patient\n- [ ] Change to alert logic must not reduce Critical-class recall (CCB rule, Section 5.7)\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Clinician-adjustable alert thresholds for individual patients",
+      "type": "New",
+      "areas": [
+        "frontend",
+        "backend"
+      ]
+    },
+    {
+      "id": "F19",
+      "title": "F19: Ensemble model trial",
+      "kind": "feature",
+      "priority": "Could",
+      "sp": 3,
+      "sprint": "3 (stretch)",
+      "labels": [
+        "feature",
+        "Could",
+        "ml"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Feature F19** | Priority: **Could** | Type: New | Story points: **3** | Proposed sprint: **3 (stretch)**\n\n**User story**\nAs the team, we want to know whether an ensemble beats the Decision Tree on the Moderate class.\n\n**Description**\nTest Random Forest / gradient boosting against the Decision Tree, particularly on the Moderate class\n\n**Acceptance criteria**\n- [ ] Random Forest and gradient boosting evaluated with the same CV protocol as F9\n- [ ] Result recorded in the evaluation report; adopt only if Critical recall does not drop\n\n**Definition of done**\n- [ ] Feature branch + pull request linked to this issue (`Closes #...`)\n- [ ] Reviewed by at least one other member\n- [ ] Acceptance criteria above checked\n- [ ] Docs/README updated if behaviour changed\n- [ ] No real patient data; 'not for clinical use' notice intact\n\n_Source: Milestone 1 report, Section 6.1. Criteria are a draft for refinement in Sprint 0 planning._",
+      "description": "Test Random Forest / gradient boosting against the Decision Tree, particularly on the Moderate class",
+      "type": "New",
+      "areas": [
+        "ml"
+      ]
+    },
+    {
+      "id": "D1",
+      "title": "D1: Milestone 1 report and GitHub Projects backlog",
+      "kind": "deliverable",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "0",
+      "labels": [
+        "deliverable",
+        "Must",
+        "docs"
+      ],
+      "milestone": "Milestone 1 (Week 4)",
+      "body": "**Course deliverable D1** | Priority: **Must** | Proposed sprint: **0**\n\nInitiation deliverable: concept proposal, stakeholder analysis, charter, scope, assumptions/constraints, lifecycle model, configured board.\n\n**Done when**\n- [ ] Deliverable committed under `docs/` and reviewed\n- [ ] Submitted to the instructor on time\n\n_Source: Milestone 1 report, Section 6.3._",
+      "description": "Initiation deliverable: concept proposal, stakeholder analysis, charter, scope, assumptions/constraints, lifecycle model, configured board.",
+      "type": "Deliverable",
+      "areas": [
+        "docs"
+      ]
+    },
+    {
+      "id": "D2",
+      "title": "D2: Milestone 2 planning package",
+      "kind": "deliverable",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "1",
+      "labels": [
+        "deliverable",
+        "Must",
+        "docs"
+      ],
+      "milestone": "Milestone 2 (Week 7)",
+      "body": "**Course deliverable D2** | Priority: **Must** | Proposed sprint: **1**\n\nWBS and dictionary, CPM/PERT diagram and critical path, baseline Gantt, effort estimation, initial risk register.\n\n**Done when**\n- [ ] Deliverable committed under `docs/` and reviewed\n- [ ] Submitted to the instructor on time\n\n_Source: Milestone 1 report, Section 6.3._",
+      "description": "WBS and dictionary, CPM/PERT diagram and critical path, baseline Gantt, effort estimation, initial risk register.",
+      "type": "Deliverable",
+      "areas": [
+        "docs"
+      ]
+    },
+    {
+      "id": "D3",
+      "title": "D3: Model evaluation report",
+      "kind": "deliverable",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "2",
+      "labels": [
+        "deliverable",
+        "Must",
+        "docs",
+        "ml"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Course deliverable D3** | Priority: **Must** | Proposed sprint: **2**\n\nBaseline reproduction, cross-validated metrics, confusion matrix, chosen thresholds. Depends on F9.\n\n**Done when**\n- [ ] Deliverable committed under `docs/` and reviewed\n- [ ] Submitted to the instructor on time\n\n_Source: Milestone 1 report, Section 6.3._",
+      "description": "Baseline reproduction, cross-validated metrics, confusion matrix, chosen thresholds. Depends on F9.",
+      "type": "Deliverable",
+      "areas": [
+        "docs",
+        "ml"
+      ]
+    },
+    {
+      "id": "D4",
+      "title": "D4: Release 1.0 sign-off (UAT)",
+      "kind": "deliverable",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "3",
+      "labels": [
+        "deliverable",
+        "Must",
+        "docs"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Course deliverable D4** | Priority: **Must** | Proposed sprint: **3**\n\nFinal UAT with the product owner against AC1-AC8 (Section 6.4 of the report).\n\n**Done when**\n- [ ] Deliverable committed under `docs/` and reviewed\n- [ ] Submitted to the instructor on time\n\n_Source: Milestone 1 report, Section 6.3._",
+      "description": "Final UAT with the product owner against AC1-AC8 (Section 6.4 of the report).",
+      "type": "Deliverable",
+      "areas": [
+        "docs"
+      ]
+    },
+    {
+      "id": "D5",
+      "title": "D5: Test plan, results and usability test notes",
+      "kind": "deliverable",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "3",
+      "labels": [
+        "deliverable",
+        "Must",
+        "docs"
+      ],
+      "milestone": "Release 1.0 (Week 12)",
+      "body": "**Course deliverable D5** | Priority: **Must** | Proposed sprint: **3**\n\nTest plan and cases, results, and usability sessions with 5 users (AC7).\n\n**Done when**\n- [ ] Deliverable committed under `docs/` and reviewed\n- [ ] Submitted to the instructor on time\n\n_Source: Milestone 1 report, Section 6.3._",
+      "description": "Test plan and cases, results, and usability sessions with 5 users (AC7).",
+      "type": "Deliverable",
+      "areas": [
+        "docs"
+      ]
+    },
+    {
+      "id": "D6",
+      "title": "D6: Milestone 3 package",
+      "kind": "deliverable",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "3",
+      "labels": [
+        "deliverable",
+        "Must",
+        "docs"
+      ],
+      "milestone": "Milestone 3 (Week 13)",
+      "body": "**Course deliverable D6** | Priority: **Must** | Proposed sprint: **3**\n\nSCM audit (Git branch tree), EVM performance report, IEEE-format documentation, oral defence, retrospective.\n\n**Done when**\n- [ ] Deliverable committed under `docs/` and reviewed\n- [ ] Submitted to the instructor on time\n\n_Source: Milestone 1 report, Section 6.3._",
+      "description": "SCM audit (Git branch tree), EVM performance report, IEEE-format documentation, oral defence, retrospective.",
+      "type": "Deliverable",
+      "areas": [
+        "docs"
+      ]
+    },
+    {
+      "id": "C1",
+      "title": "C1: Repository, branch protection and project board setup",
+      "kind": "chore",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "0",
+      "labels": [
+        "chore",
+        "Must",
+        "docs",
+        "devops"
+      ],
+      "milestone": "Milestone 1 (Week 4)",
+      "body": "**Chore C1** | Priority: **Must** | Proposed sprint: **0**\n\nCreate the team repository, protect main, configure labels, GitHub Project fields/columns/iterations (see docs/milestone-1/05-github-projects-config.md).\n\n**Done when**\n- [ ] Outcome recorded in the repository (docs) or on the board\n\n_Source: Milestone 1 report, Sections 5-7._",
+      "description": "Create the team repository, protect main, configure labels, GitHub Project fields/columns/iterations (see docs/milestone-1/05-github-projects-config.md).",
+      "type": "Chore",
+      "areas": [
+        "docs",
+        "devops"
+      ]
+    },
+    {
+      "id": "C2",
+      "title": "C2: Confirm IEEE DataPort licence and cite dataset",
+      "kind": "chore",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "0",
+      "labels": [
+        "chore",
+        "Must",
+        "docs",
+        "ml"
+      ],
+      "milestone": "Milestone 1 (Week 4)",
+      "body": "**Chore C2** | Priority: **Must** | Proposed sprint: **0**\n\nCheck redistribution terms of the synthetic ICU dataset; document the download route in the README (assumption A3, TELOS legal).\n\n**Done when**\n- [ ] Outcome recorded in the repository (docs) or on the board\n\n_Source: Milestone 1 report, Sections 5-7._",
+      "description": "Check redistribution terms of the synthetic ICU dataset; document the download route in the README (assumption A3, TELOS legal).",
+      "type": "Chore",
+      "areas": [
+        "docs",
+        "ml"
+      ]
+    },
+    {
+      "id": "C3",
+      "title": "C3: Get written confirmation of approval to build on the existing prototype",
+      "kind": "chore",
+      "priority": "Must",
+      "sp": null,
+      "sprint": "0",
+      "labels": [
+        "chore",
+        "Must",
+        "docs"
+      ],
+      "milestone": "Milestone 1 (Week 4)",
+      "body": "**Chore C3** | Priority: **Must** | Proposed sprint: **0**\n\nInstructor approval for building on the prototype must hold for all milestones (assumption A2).\n\n**Done when**\n- [ ] Outcome recorded in the repository (docs) or on the board\n\n_Source: Milestone 1 report, Sections 5-7._",
+      "description": "Instructor approval for building on the prototype must hold for all milestones (assumption A2).",
+      "type": "Chore",
+      "areas": [
+        "docs"
+      ]
+    }
+  ]
+}
